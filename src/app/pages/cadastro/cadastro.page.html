@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Nome Completo -->
+  <ion-item>
+    <ion-label position="floating">Nome Completo</ion-label>
+    <ion-input type="text" maxlength="50"></ion-input>
+  </ion-item>
+
+  <!-- CPF -->
+  <ion-item>
+    <ion-label position="floating">CPF</ion-label>
+    <ion-input type="text" maxlength="11" inputmode="numeric"></ion-input>
+  </ion-item>
+
+<!-- Data de Nascimento -->
+<ion-item>
+  <ion-label position="floating">Data de Nascimento</ion-label>
+
+  <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime
+        id="datetime"
+        presentation="date-time"
+        value="2023-11-02"
+        [formatOptions]="{
+          date: {
+            weekday: 'short',
+            month: 'long',
+            day: '2-digit',
+          },
+        }"
+      ></ion-datetime>
+    </ng-template>
+  </ion-modal> 
+</ion-item>
+
+
+
+  <!-- Endereço -->
+  <ion-item>
+    <ion-label position="floating">Endereço</ion-label>
+    <ion-input type="text" maxlength="50"></ion-input>
+  </ion-item>
+
+  <!-- Senha -->
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+  <!-- Repetir a Senha -->
+  <ion-item>
+    <ion-label position="floating">Repetir Senha</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+  <!-- Botão de Cadastrar -->
+  <ion-button expand="block" color="primary">
+    Cadastrar
+  </ion-button>
+</ion-content>
