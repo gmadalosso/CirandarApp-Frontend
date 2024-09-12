@@ -1,0 +1,7 @@
+{
+  "name": "CirandarApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
