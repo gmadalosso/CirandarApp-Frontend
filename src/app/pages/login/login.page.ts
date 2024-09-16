@@ -23,7 +23,12 @@ export class LoginPage {
       next: (response) => {
         console.log('Login feito com sucesso!', response);
         localStorage.setItem('userRole', response.usuario.role); //Salva role do usuário
-        this.router.navigate(['/']);
+        
+        if (response.usuario.role === 'admin') {
+          this.router.navigate(['/admin-dashboard']);
+        } else {
+          this.router.navigate(['/']);
+        }
       },
       error: (error) => {
         console.error('Falha no login', error);

@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'editar-biblioteca',
     loadChildren: () => import('./pages/editar-biblioteca/editar-biblioteca.module').then( m => m.EditarBibliotecaPageModule)
+  },
+  {
+    path: 'info-biblioteca',
+    loadChildren: () => import('./pages/info-biblioteca/info-biblioteca.module').then( m => m.InfoBibliotecaPageModule)
   }
 ];
 
