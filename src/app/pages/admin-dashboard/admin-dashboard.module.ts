@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { InfoBibliotecaPageRoutingModule } from './info-biblioteca-routing.module';
-
-import { InfoBibliotecaPage } from './info-biblioteca.page';
+import { AdminDashboardPageRoutingModule } from './admin-dashboard-routing.module';
+import { AdminDashboardPage } from './admin-dashboard.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InfoBibliotecaPageRoutingModule
+    AdminDashboardPageRoutingModule
   ],
-  declarations: [InfoBibliotecaPage]
+  declarations: [AdminDashboardPage]
 })
-export class InfoBibliotecaPageModule {}
+export class AdminDashboardPageModule {}

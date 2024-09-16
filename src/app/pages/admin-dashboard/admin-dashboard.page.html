@@ -1,0 +1,44 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Admin Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Button to navigate to the Cadastrar Biblioteca page -->
+  <ion-button expand="block" color="primary" (click)="cadastrarBiblioteca()">Cadastrar Biblioteca</ion-button>
+
+  <!-- List of existing bibliotecas -->
+  <ion-list *ngIf="bibliotecas.length > 0">
+    <ion-list-header>
+      <ion-label>Lista de Bibliotecas</ion-label>
+
+      <!-- Reload Button next to the title -->
+      <ion-button size="small" fill="clear" color="primary" (click)="reloadBibliotecas()">
+        <ion-icon slot="icon-only" name="reload-outline"></ion-icon>
+      </ion-button>
+    </ion-list-header>
+
+    <ion-item *ngFor="let biblioteca of bibliotecas">
+      <ion-label>
+        <h2>{{ biblioteca.nome }}</h2>
+        <p>{{ biblioteca.endereco }}</p>
+      </ion-label>
+
+      <!-- EDITAR Button -->
+      <ion-button color="secondary">
+        Editar
+      </ion-button>
+
+      <!-- DELETAR Button -->
+      <ion-button color="danger">
+        Deletar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Show a message if no bibliotecas are found -->
+  <ion-text color="medium" *ngIf="bibliotecas.length === 0">
+    Nenhuma biblioteca encontrada.
+  </ion-text>
+</ion-content>
