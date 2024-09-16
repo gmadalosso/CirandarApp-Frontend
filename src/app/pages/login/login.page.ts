@@ -27,7 +27,7 @@ export class LoginPage {
         if (response.usuario.role === 'admin') {
           this.router.navigate(['/admin-dashboard']);
         } else {
-          this.router.navigate(['/']);
+          this.router.navigate(['/pagina-inicial']);
         }
       },
       error: (error) => {

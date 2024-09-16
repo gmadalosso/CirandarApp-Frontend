@@ -27,12 +27,22 @@ export class AdminDashboardPage implements OnInit {
     });
   }
 
+  cadastrarBiblioteca() {
+    this.router.navigate(['/cadastrar-biblioteca']);
+  }
+
   reloadBibliotecas() {
     this.loadBibliotecas(); 
   }
-  
 
-  cadastrarBiblioteca() {
-    this.router.navigate(['/cadastrar-biblioteca']);
+  logout() {
+    this.http.post('http://localhost:5001/logout', {}).subscribe({
+      next: () => {
+        this.router.navigate(['/']); 
+      },
+      error: (error) => {
+        console.error('Falha no logout', error);
+      }
+    });
   }
 }

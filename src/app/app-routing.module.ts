@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'info-biblioteca',
     loadChildren: () => import('./pages/info-biblioteca/info-biblioteca.module').then( m => m.InfoBibliotecaPageModule)
+  },
+  {
+    path: 'pagina-inicial',
+    loadChildren: () => import('./pages/pagina-inicial/pagina-inicial.module').then( m => m.PaginaInicialPageModule)
   }
 ];
 
