@@ -1,6 +1,6 @@
 <ion-header translucent="true">
   <ion-toolbar>
-    <ion-title>Admin Dashboard</ion-title>
+    <ion-title>Menu de Administrador</ion-title>
     <ion-buttons slot="end">
       <ion-button color="danger" (click)="logout()">
         <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
@@ -10,12 +10,11 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
   <ion-button expand="block" color="primary" (click)="cadastrarBiblioteca()">Cadastrar Biblioteca</ion-button>
 
   <ion-list *ngIf="bibliotecas.length > 0">
     <ion-list-header>
-      <ion-label>Lista de Bibliotecas</ion-label>
+      <ion-label><h1>Lista de Bibliotecas</h1></ion-label>
 
       <ion-button size="small" fill="clear" color="primary" (click)="reloadBibliotecas()">
         <ion-icon slot="icon-only" name="reload-outline"></ion-icon>
@@ -28,12 +27,14 @@
         <p>{{ biblioteca.endereco }}</p>
       </ion-label>
 
-      <ion-button color="secondary">
-        Editar
+      <!-- EDITAR -->
+      <ion-button color="secondary" (click)="editBiblioteca(biblioteca)">
+        <ion-icon name="create-outline"></ion-icon>
       </ion-button>
 
-      <ion-button color="danger">
-        Deletar
+      <!-- DELETAR -->
+      <ion-button color="danger" (click)="confirmDelete(biblioteca._id)">
+        <ion-icon name="trash-outline"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
