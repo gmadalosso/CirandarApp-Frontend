@@ -14,7 +14,7 @@ export class PaginaInicialPage {
   logout() {
     this.http.post('http://localhost:5001/logout', {}).subscribe({
       next: () => {
-        this.router.navigate(['/']); 
+        this.router.navigate(['/inicio']); 
       },
       error: (error) => {
         console.error('Falha no logout', error);
