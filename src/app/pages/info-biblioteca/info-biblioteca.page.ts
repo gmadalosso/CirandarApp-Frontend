@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';  // Import both ActivatedRoute and Router
+import { ActivatedRoute, Router } from '@angular/router';
 import { Biblioteca } from '../lista-bibliotecas/lista-bibliotecas.types';
 
 @Component({

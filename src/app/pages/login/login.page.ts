@@ -22,7 +22,7 @@ export class LoginPage {
     this.loginService.login(this.email, this.senha).subscribe({
       next: (response) => {
         console.log('Login feito com sucesso!', response);
-        localStorage.setItem('userRole', response.usuario.role); //Salva role do usuário
+        localStorage.setItem('userRole', response.usuario.role);
         localStorage.setItem('isLoggedIn', 'true');
 
         if (response.usuario.role === 'admin') {
