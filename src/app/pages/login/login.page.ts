@@ -24,7 +24,7 @@ export class LoginPage {
         console.log('Login feito com sucesso!', response);
         localStorage.setItem('userRole', response.usuario.role); //Salva role do usuário
         localStorage.setItem('isLoggedIn', 'true');
-        
+
         if (response.usuario.role === 'admin') {
           this.router.navigate(['/admin-dashboard']);
         } else {
@@ -46,5 +46,13 @@ export class LoginPage {
     });
 
     await alert.present();
+  }
+
+  goBack() {
+    this.router.navigate(['/pagina-inicial']);
+  }
+
+  goToMain() {
+    this.router.navigate(['/inicio']);
   }
 }

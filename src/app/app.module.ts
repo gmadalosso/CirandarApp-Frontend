@@ -3,13 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'; // Updated import for HttpClient
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PopoverMenuComponent } from './components/popover-menu/popover-menu.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PopoverMenuComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -17,7 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    provideHttpClient(withInterceptorsFromDi()), // Use provideHttpClient here
+    provideHttpClient(withInterceptorsFromDi()),
   ],
   bootstrap: [AppComponent],
 })

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { PopoverController } from '@ionic/angular';
+import { PopoverMenuComponent } from 'src/app/components/popover-menu/popover-menu.component';
 
 @Component({
   selector: 'app-pagina-inicial',
@@ -9,23 +11,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PaginaInicialPage {
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient, private popoverController: PopoverController) {}
 
   goToBibliotecas() {
     this.router.navigate(['/lista-bibliotecas']);
   }
 
-  logout() {
-    this.http.post('http://localhost:5001/logout', {}).subscribe({
-      next: () => {
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('userRole');
-        this.router.navigate(['/inicio']);
-      },
-      error: (error) => {
-        console.error('Falha no logout', error);
-      }
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverMenuComponent,
+      event: ev,
+      translucent: true,
     });
+    await popover.present();
   }
 
   goToMain() {
