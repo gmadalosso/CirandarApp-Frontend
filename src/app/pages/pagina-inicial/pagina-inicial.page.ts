@@ -11,14 +11,24 @@ export class PaginaInicialPage {
 
   constructor(private router: Router, private http: HttpClient) {}
 
+  goToBibliotecas() {
+    this.router.navigate(['/lista-bibliotecas']);
+  }
+
   logout() {
     this.http.post('http://localhost:5001/logout', {}).subscribe({
       next: () => {
-        this.router.navigate(['/inicio']); 
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userRole');
+        this.router.navigate(['/inicio']);
       },
       error: (error) => {
         console.error('Falha no logout', error);
       }
     });
+  }
+
+  goToMain() {
+    this.router.navigate(['/pagina-inicial']);
   }
 }

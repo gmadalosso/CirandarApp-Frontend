@@ -17,11 +17,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'info-biblioteca',
-    loadChildren: () => import('./pages/info-biblioteca/info-biblioteca.module').then( m => m.InfoBibliotecaPageModule)
-  },
-
-  {
     path: 'admin-dashboard',
     loadChildren: () => import('./pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
   },
@@ -34,13 +29,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/editar-biblioteca/editar-biblioteca.module').then( m => m.EditarBibliotecaPageModule)
   },
   {
-    path: 'info-biblioteca',
-    loadChildren: () => import('./pages/info-biblioteca/info-biblioteca.module').then( m => m.InfoBibliotecaPageModule)
-  },
-  {
     path: 'pagina-inicial',
     loadChildren: () => import('./pages/pagina-inicial/pagina-inicial.module').then( m => m.PaginaInicialPageModule)
-  }
+  },
+  {
+    path: 'lista-bibliotecas',
+    loadChildren: () => import('./pages/lista-bibliotecas/lista-bibliotecas.module').then( m => m.ListaBibliotecasPageModule)
+  },
+  {
+    path: 'info-biblioteca/:id',
+    loadChildren: () => import('./pages/info-biblioteca/info-biblioteca.module').then(m => m.InfoBibliotecaPageModule)
+  },
 ];
 
 @NgModule({

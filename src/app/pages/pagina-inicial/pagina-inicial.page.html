@@ -1,10 +1,44 @@
-<ion-header translucent="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Página Inicial</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="logout()">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="logo-container" (click)="goToMain()">
+      <img src="assets/imgs/cirandar-logo.png" alt="Cirandar" class="logo">
+    </ion-title>
     <ion-buttons slot="end">
-      <ion-button color="danger" (click)="logout()">
-        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      <ion-button>
+        <ion-icon name="settings-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-content class="ion-padding" color="light">
+
+  <ion-searchbar placeholder="Buscar" showCancelButton="focus" class="search-bar"></ion-searchbar>
+
+  <ion-card button disabled>
+    <img src="assets/imgs/eventos.png" alt="Eventos de Difusão Cultural" class="card-image"/>
+    <ion-card-header>
+      <ion-card-title>Eventos de Difusão Cultural</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card button disabled>
+    <img src="assets/imgs/oficinas.png" alt="Oficinas" class="card-image"/>
+    <ion-card-header>
+      <ion-card-title>Oficinas</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card button (click)="goToBibliotecas()">
+    <img src="assets/imgs/bibliotecas.png" alt="Bibliotecas" class="card-image"/>
+    <ion-card-header>
+      <ion-card-title>Bibliotecas</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>
