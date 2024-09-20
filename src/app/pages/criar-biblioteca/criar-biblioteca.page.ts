@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-criar-biblioteca',
@@ -8,8 +9,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./criar-biblioteca.page.scss'],
 })
 export class CriarBibliotecaPage implements OnInit {
-  biblioteca: any = {}; // Stores biblioteca details
+  biblioteca: any = {};
   isEditMode: boolean = false;
+  apiUrl = environment.apiUrl;
 
   constructor(
     private router: Router,
@@ -17,20 +19,18 @@ export class CriarBibliotecaPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.resetForm(); // Reset form fields on initialization
+    this.resetForm();
 
-    // Check if we're in edit mode by getting state from navigation
     const navigation = this.router.getCurrentNavigation();
     if (navigation && navigation.extras.state && navigation.extras.state['biblioteca']) {
       this.biblioteca = navigation.extras.state['biblioteca'];
-      this.isEditMode = true; // We're in edit mode
+      this.isEditMode = true;
     } else {
-      this.isEditMode = false; // We're in create mode, so reset the form
-      this.resetForm(); // Clear any pre-filled values
+      this.isEditMode = false;
+      this.resetForm();
     }
   }
 
-  // Function to reset form fields
   resetForm() {
     this.biblioteca = {
       nome: '',
@@ -40,10 +40,9 @@ export class CriarBibliotecaPage implements OnInit {
     };
   }
 
-  // Function to create or update biblioteca
   saveBiblioteca() {
     if (this.isEditMode) {
-      this.http.put(`http://localhost:5001/api/bibliotecas/${this.biblioteca._id}`, {
+      this.http.put(`${this.apiUrl}/bibliotecas/${this.biblioteca._id}`, {
         nome: this.biblioteca.nome,
         endereco: this.biblioteca.endereco,
         contato: this.biblioteca.contato,
@@ -58,8 +57,8 @@ export class CriarBibliotecaPage implements OnInit {
         }
       });
     } else {
-      // Create a new biblioteca
-      this.http.post('http://localhost:5001/api/bibliotecas', this.biblioteca, { withCredentials: true })
+      this.http.post(`${this.apiUrl}/bibliotecas`, this.biblioteca,
+        { withCredentials: true })
         .subscribe({
           next: () => {
             console.log('Biblioteca criada com sucesso');

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Biblioteca } from './lista-bibliotecas.types';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-lista-bibliotecas',
@@ -13,13 +14,16 @@ export class ListaBibliotecasPage implements OnInit {
   constructor(private router: Router, private http: HttpClient) {}
 
   bibliotecas: Biblioteca[] = [];
+  apiUrl = environment.apiUrl;
 
   ngOnInit() {
     this.loadBibliotecas();
   }
 
   loadBibliotecas() {
-    this.http.get<{ message: string, bibliotecas: Biblioteca[] }>('http://localhost:5001/api/bibliotecas')
+    this.http.get<{ message: string, bibliotecas: Biblioteca[] }>(`${this.apiUrl}/bibliotecas`, {
+      withCredentials: true
+    })
       .subscribe({
         next: (response) => {
           this.bibliotecas = response.bibliotecas;
