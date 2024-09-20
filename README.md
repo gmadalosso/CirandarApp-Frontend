@@ -4,6 +4,7 @@ O CirandarApp é a aplicação frontend do projeto desenvolvido para a cadeira d
 
 Alunos participantes:
 - Álvaro Souza Pereira da Silva
+- Bruno de Araujo Fonseca
 - Carla Viganigo Rangel de Castilhos
 - Gabriela Madalosso
 - Hierro de Almeida Zaro
