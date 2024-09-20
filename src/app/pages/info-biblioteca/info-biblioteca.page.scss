@@ -1,0 +1,47 @@
+.logo-container {
+  position: relative;
+}
+
+.logo {
+  height: 100px;
+  top: -50px;
+  position: absolute;
+  left: 35%;
+}
+
+ion-searchbar {
+  --background: #ECE6F0;
+  --border-radius: 16px;
+  --color: #49454F;
+}
+
+ion-card {
+  margin-top: 20px;
+}
+
+.biblioteca-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.biblioteca-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+ion-card-content p {
+  font-size: 1rem;
+  margin: 0 0 5px 0;
+}
+
+.consultar-button {
+  margin-top: 20px;
+}
+
+ion-card-subtitle {
+  text-align: center;
+}

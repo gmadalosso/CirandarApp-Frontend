@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular'; 
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,15 +15,16 @@ export class LoginPage {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private alertController: AlertController 
+    private alertController: AlertController
   ) {}
 
   onLogin() {
     this.loginService.login(this.email, this.senha).subscribe({
       next: (response) => {
         console.log('Login feito com sucesso!', response);
-        localStorage.setItem('userRole', response.usuario.role); //Salva role do usuário
-        
+        localStorage.setItem('userRole', response.usuario.role);
+        localStorage.setItem('isLoggedIn', 'true');
+
         if (response.usuario.role === 'admin') {
           this.router.navigate(['/admin-dashboard']);
         } else {
@@ -32,7 +33,7 @@ export class LoginPage {
       },
       error: (error) => {
         console.error('Falha no login', error);
-        this.showErrorModal(error.error.message); 
+        this.showErrorModal(error.error.message);
       }
     });
   }
@@ -40,10 +41,18 @@ export class LoginPage {
   async showErrorModal(errorMessage: string) {
     const alert = await this.alertController.create({
       header: 'FALHA NO LOGIN',
-      message: errorMessage,  
-      buttons: ['OK']  
+      message: errorMessage,
+      buttons: ['OK']
     });
 
     await alert.present();
+  }
+
+  goBack() {
+    this.router.navigate(['/pagina-inicial']);
+  }
+
+  goToMain() {
+    this.router.navigate(['/inicio']);
   }
 }

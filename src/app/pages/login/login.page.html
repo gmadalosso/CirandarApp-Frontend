@@ -1,10 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/inicio" text=""></ion-back-button>
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title>
-      Acervo Digital
+
+    <ion-title class="logo-container" (click)="goToMain()">
+      <img src="assets/imgs/cirandar-logo.png" alt="Cirandar" class="logo">
     </ion-title>
   </ion-toolbar>
 </ion-header>
