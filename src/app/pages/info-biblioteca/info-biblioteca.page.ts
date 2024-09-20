@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Biblioteca } from '../lista-bibliotecas/lista-bibliotecas.types';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-info-biblioteca',
@@ -10,6 +11,7 @@ import { Biblioteca } from '../lista-bibliotecas/lista-bibliotecas.types';
 })
 export class InfoBibliotecaPage implements OnInit {
   biblioteca: Biblioteca | undefined;
+  apiUrl = environment.apiUrl;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {}
 
@@ -21,7 +23,8 @@ export class InfoBibliotecaPage implements OnInit {
   }
 
   loadBiblioteca(id: string) {
-    this.http.get<{ message: string, biblioteca: Biblioteca }>(`http://localhost:5001/api/bibliotecas/${id}`)
+    this.http.get<{ message: string, biblioteca: Biblioteca }>(`${this.apiUrl}/bibliotecas/${id}`,
+      { withCredentials: true })
       .subscribe({
         next: (response) => {
           this.biblioteca = response.biblioteca;

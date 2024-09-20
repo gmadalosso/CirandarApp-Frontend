@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-criar-biblioteca',
@@ -10,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class CriarBibliotecaPage implements OnInit {
   biblioteca: any = {}; // Stores biblioteca details
   isEditMode: boolean = false;
+  apiUrl = environment.apiUrl;
 
   constructor(
     private router: Router,
@@ -43,7 +45,7 @@ export class CriarBibliotecaPage implements OnInit {
   // Function to create or update biblioteca
   saveBiblioteca() {
     if (this.isEditMode) {
-      this.http.put(`http://localhost:5001/api/bibliotecas/${this.biblioteca._id}`, {
+      this.http.put(`${this.apiUrl}/bibliotecas/${this.biblioteca._id}`, {
         nome: this.biblioteca.nome,
         endereco: this.biblioteca.endereco,
         contato: this.biblioteca.contato,
@@ -59,7 +61,8 @@ export class CriarBibliotecaPage implements OnInit {
       });
     } else {
       // Create a new biblioteca
-      this.http.post('http://localhost:5001/api/bibliotecas', this.biblioteca, { withCredentials: true })
+      this.http.post(`${this.apiUrl}/bibliotecas`, this.biblioteca,
+        { withCredentials: true })
         .subscribe({
           next: () => {
             console.log('Biblioteca criada com sucesso');
